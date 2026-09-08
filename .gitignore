@@ -1,8 +1,20 @@
-# 本地预览产物
+# 本地临时截图与产物
 .preview-*.png
+.test-*.png
+*.tmp
 
-# 工具缓存
+# 工具及缓存
 .mimosa/
-node_modules/
-.wrangler/
 .zcode/
+.wrangler/
+node_modules/
+dist/
+.cache/
+
+# 系统与编辑器杂项
+.DS_Store
+Thumbs.db
+Desktop.ini
+.vscode/
+.idea/
+*.log

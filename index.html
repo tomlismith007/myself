@@ -18,6 +18,8 @@
   <div class="scroll-progress" aria-hidden="true"></div>
   <a class="skip-link" href="#main">跳到主要内容</a>
 
+  <div class="page-glow" aria-hidden="true"><span class="blob"></span></div>
+
   <header class="site-header">
     <nav class="nav-capsule" aria-label="主导航">
       <a class="brand" href="#top">
@@ -41,35 +43,36 @@
   <main id="main">
     <!-- Hero -->
     <section class="hero" id="top">
-      <div class="hero-glow" aria-hidden="true"><span class="blob"></span></div>
       <div class="container hero-inner">
         <div class="hero-avatar reveal">
-          <img src="assets/img/avatar.jpg" alt="李瑞祥的照片" width="160" height="160">
+          <img src="assets/img/avatar.jpg" alt="李瑞祥的照片" width="160" height="224">
         </div>
-        <p class="hero-hello reveal" style="--d:.05s">你好，我是</p>
-        <h1 class="hero-name reveal" style="--d:.1s">李瑞祥</h1>
-        <p class="hero-role reveal" style="--d:.15s">AI Agent 产品研发<span class="dot" aria-hidden="true">·</span>2026 届</p>
-        <p class="hero-intro reveal" style="--d:.2s">专注 AI Agent 的工程化落地：Prompt 设计、工作流编排、RAG 与工具调用，从需求拆解到 MVP 上线全流程驱动。</p>
-        <ul class="hero-tags reveal" style="--d:.25s">
-          <li class="tag tag-status"><span class="pulse" aria-hidden="true"></span>求职中</li>
-          <li class="tag tag-ghost">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-            广州 · 海珠
-          </li>
-          <li class="tag tag-ghost">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-            中共党员
-          </li>
-        </ul>
-        <div class="hero-cta reveal" style="--d:.3s">
-          <a class="btn btn-primary" href="assets/resume/李瑞祥简历_AIAgent产品研发.pdf" target="_blank" rel="noopener">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-            查看简历
-          </a>
-          <button class="btn btn-ghost" type="button" data-copy="3289243350@qq.com" data-toast="邮箱已复制">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
-            复制邮箱
-          </button>
+        <div class="hero-text">
+          <p class="hero-hello reveal" style="--d:.05s">你好，我是</p>
+          <h1 class="hero-name reveal" style="--d:.1s">李瑞祥</h1>
+          <p class="hero-role reveal" style="--d:.15s">AI Agent 产品研发<span class="dot" aria-hidden="true">·</span>2026 届</p>
+          <p class="hero-intro reveal" style="--d:.2s">专注 AI Agent 的工程化落地：Prompt 设计、工作流编排、RAG 与工具调用，从需求拆解到 MVP 上线全流程驱动。</p>
+          <ul class="hero-tags reveal" style="--d:.25s">
+            <li class="tag tag-status"><span class="pulse" aria-hidden="true"></span>求职中</li>
+            <li class="tag tag-ghost">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              广州 · 海珠
+            </li>
+            <li class="tag tag-ghost">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+              中共党员
+            </li>
+          </ul>
+          <div class="hero-cta reveal" style="--d:.3s">
+            <a class="btn btn-primary" href="assets/resume/李瑞祥简历_AIAgent产品研发.pdf" target="_blank" rel="noopener">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+              查看简历
+            </a>
+            <button class="btn btn-ghost" type="button" data-copy="3289243350@qq.com" data-toast="邮箱已复制">
+              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+              复制邮箱
+            </button>
+          </div>
         </div>
         <dl class="hero-stats reveal" style="--d:.4s">
           <div class="stat"><dt>实习经历</dt><dd>2<small>段</small></dd></div>
@@ -302,7 +305,7 @@
     </section>
 
     <!-- 荣誉 -->
-    <section class="section section-tint section-tint--sky" id="honors">
+    <section class="section section-tint" id="honors">
       <div class="container">
         <header class="section-head reveal">
           <span class="section-pill">荣誉</span>
@@ -360,8 +363,8 @@
               <svg class="icon" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
             </span>
             <h3>电话</h3>
-            <p class="contact-value">198****6637</p>
-            <button class="btn btn-ghost btn-sm" type="button" data-copy="19894366397" data-toast="完整号码已复制">点击复制完整号码</button>
+            <p class="contact-value">198****6397</p>
+            <a class="btn btn-ghost btn-sm" href="mailto:3289243350@qq.com?subject=咨询联系电话" data-copy="3289243350@qq.com" data-toast="邮箱已复制，可通过邮件获取完整电话">邮箱获取</a>
           </article>
           <article class="card contact-card reveal" style="--d:.08s">
             <span class="card-icon" aria-hidden="true">
@@ -379,22 +382,6 @@
             <p class="contact-value">广州 · 海珠</p>
             <span class="contact-note">求职意向：AI Agent 产品研发</span>
           </article>
-        </div>
-        <div class="resume-banner reveal" style="--d:.2s">
-          <div>
-            <h3>想了解更完整的我？</h3>
-            <p>简历 PDF 里有全部项目细节与时间线</p>
-          </div>
-          <div class="resume-banner-actions">
-            <a class="btn btn-primary" href="assets/resume/李瑞祥简历_AIAgent产品研发.pdf" target="_blank" rel="noopener">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
-              在线查看
-            </a>
-            <a class="btn btn-ghost" href="assets/resume/李瑞祥简历_AIAgent产品研发.pdf" download="李瑞祥简历_AIAgent产品研发.pdf">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-              下载简历
-            </a>
-          </div>
         </div>
       </div>
     </section>
