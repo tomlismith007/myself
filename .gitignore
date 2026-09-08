@@ -1,0 +1,8 @@
+# 本地预览产物
+.preview-*.png
+
+# 工具缓存
+.mimosa/
+node_modules/
+.wrangler/
+.zcode/
