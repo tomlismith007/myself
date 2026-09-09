@@ -172,4 +172,302 @@
       });
     });
   });
+
+  /* ==========================================================================
+     Agent Skills 扇形圆环无限轮盘控制器 (物理惯性 + 无限循环)
+     ========================================================================== */
+  (function initSkillsFanWheel() {
+    var stage = document.getElementById('skills-fan-stage');
+    var track = document.getElementById('skills-fan-track');
+    if (!stage || !track) return;
+
+    var originalCards = Array.from(track.querySelectorAll('.agent-skill-card'));
+    if (originalCards.length === 0) return;
+
+    // 清空 track，按 8 轮克隆构建 48 张卡片的 360° 完整平缓圆环 (8 x 6 = 48，每张 7.5 度，弧度更加柔和)
+    track.innerHTML = '';
+    var totalCards = 48;
+    var cards = [];
+    var stepAngle = 360 / totalCards; // 7.5度步长，大幅减小卡片之间的倾角落差
+
+    for (var i = 0; i < totalCards; i++) {
+      var srcCard = originalCards[i % originalCards.length];
+      var clone = srcCard.cloneNode(true);
+      clone.classList.add('fan-card');
+      track.appendChild(clone);
+      cards.push(clone);
+    }
+
+    var currentAngle = 0;
+    var radius = 2600; // 超大曲率半径，让扇形圆环弧度极其平缓优雅
+    var arcGuide = stage.querySelector('.skills-arc-guide');
+
+    function updateRadius() {
+      var w = window.innerWidth;
+      if (w >= 1200) {
+        radius = 2600;
+      } else if (w >= 768) {
+        radius = 2000;
+      } else {
+        radius = 1500;
+      }
+      // 仅在尺寸变更时更新一次 transformOrigin，禁止在逐帧渲染中重复赋值
+      cards.forEach(function (card) {
+        card.style.transformOrigin = '50% ' + radius + 'px';
+      });
+      if (arcGuide) {
+        arcGuide.style.width = (radius * 2) + 'px';
+        arcGuide.style.height = (radius * 2) + 'px';
+        arcGuide.style.marginLeft = (-radius) + 'px';
+      }
+    }
+    updateRadius();
+
+    function renderWheel(angle) {
+      var maxVisibleAngle = 32; // 视野范围优化为平缓的 32 度以内
+      cards.forEach(function (card, index) {
+        var cardAngle = (index * stepAngle + angle) % 360;
+        if (cardAngle < 0) cardAngle += 360;
+        // 归一化到 [-180, 180]，0 度即为正中央顶端
+        if (cardAngle > 180) cardAngle -= 360;
+
+        var absAngle = Math.abs(cardAngle);
+
+        if (absAngle > maxVisibleAngle) {
+          if (card.style.visibility !== 'hidden') {
+            card.style.visibility = 'hidden';
+            card.style.pointerEvents = 'none';
+          }
+        } else {
+          if (card.style.visibility !== 'visible') {
+            card.style.visibility = 'visible';
+            card.style.pointerEvents = 'auto';
+          }
+
+          var norm = absAngle / maxVisibleAngle;
+          var scale = 1 - norm * 0.08;
+          var opacity = 1 - Math.pow(norm, 1.4) * 0.75;
+          var zIndex = Math.round(100 - absAngle);
+
+          card.style.zIndex = zIndex;
+          card.style.opacity = Math.max(0.08, opacity);
+          // 移除 translate(-50%, 0)，通过 CSS margin-left 纯净定位，加上 translateZ(0) 强制 GPU 亚像素合成，消除量化抖动
+          card.style.transform = 'rotate(' + cardAngle + 'deg) scale(' + scale + ') translateZ(0)';
+        }
+      });
+    }
+
+    renderWheel(currentAngle);
+
+    // 交互与物理惯性动力学
+    var isDown = false;
+    var startX = 0;
+    var startY = 0;
+    var lastX = 0;
+    var lastTime = 0;
+    var velocity = 0;
+    var hasDragged = false;
+    var isHorizontalSwipe = null;
+    var rafId = null;
+    var dragRaf = null;
+
+    function stopMomentum() {
+      if (rafId) {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+      }
+      if (dragRaf) {
+        cancelAnimationFrame(dragRaf);
+        dragRaf = null;
+      }
+    }
+
+    function requestDragRender() {
+      if (!dragRaf) {
+        dragRaf = requestAnimationFrame(function () {
+          renderWheel(currentAngle);
+          dragRaf = null;
+        });
+      }
+    }
+
+    // 鼠标事件
+    stage.addEventListener('mousedown', function (e) {
+      if (e.button !== 0) return;
+      stopMomentum();
+      isDown = true;
+      hasDragged = false;
+      startX = e.pageX;
+      lastX = e.pageX;
+      lastTime = performance.now();
+      velocity = 0;
+      stage.classList.add('is-dragging');
+    });
+
+    window.addEventListener('mousemove', function (e) {
+      if (!isDown) return;
+
+      var currentX = e.pageX;
+      var now = performance.now();
+      var dt = now - lastTime;
+      var dx = currentX - lastX;
+      var totalDelta = currentX - startX;
+
+      if (Math.abs(totalDelta) > 3) {
+        hasDragged = true;
+      }
+
+      if (dt > 0) {
+        var instantV = dx / dt;
+        velocity = 0.75 * instantV + 0.25 * velocity;
+        lastX = currentX;
+        lastTime = now;
+      }
+
+      var dAngle = (dx / radius) * (180 / Math.PI);
+      currentAngle += dAngle;
+      requestDragRender();
+    });
+
+    function endDrag() {
+      if (!isDown) return;
+      isDown = false;
+      isHorizontalSwipe = null;
+      stage.classList.remove('is-dragging');
+
+      if (dragRaf) {
+        cancelAnimationFrame(dragRaf);
+        dragRaf = null;
+      }
+      renderWheel(currentAngle);
+
+      if (performance.now() - lastTime > 80) {
+        velocity = 0;
+      }
+
+      if (Math.abs(velocity) > 0.04) {
+        var angularVelocity = (velocity / radius) * (180 / Math.PI) * 16;
+        var maxSpeed = 2.4; // 限制最大惯性角速度，使旋转更加平缓稳重
+        if (angularVelocity > maxSpeed) angularVelocity = maxSpeed;
+        if (angularVelocity < -maxSpeed) angularVelocity = -maxSpeed;
+
+        var friction = 0.955; // 平滑优雅的减速阻尼感
+
+        function momentumStep() {
+          if (Math.abs(angularVelocity) < 0.008) {
+            rafId = null;
+            lastInteractionTime = performance.now();
+            return;
+          }
+          currentAngle += angularVelocity;
+          angularVelocity *= friction;
+          renderWheel(currentAngle);
+          rafId = requestAnimationFrame(momentumStep);
+        }
+
+        rafId = requestAnimationFrame(momentumStep);
+      } else {
+        lastInteractionTime = performance.now();
+      }
+    }
+
+    window.addEventListener('mouseup', endDrag);
+    window.addEventListener('blur', endDrag);
+
+    // 触摸手势
+    stage.addEventListener('touchstart', function (e) {
+      if (e.touches.length !== 1) return;
+      stopMomentum();
+      isDown = true;
+      hasDragged = false;
+      isHorizontalSwipe = null;
+      startX = e.touches[0].pageX;
+      startY = e.touches[0].pageY;
+      lastX = e.touches[0].pageX;
+      lastTime = performance.now();
+      velocity = 0;
+      stage.classList.add('is-dragging');
+    }, { passive: true });
+
+    window.addEventListener('touchmove', function (e) {
+      if (!isDown || e.touches.length !== 1) return;
+      var currentX = e.touches[0].pageX;
+      var currentY = e.touches[0].pageY;
+
+      if (isHorizontalSwipe === null) {
+        var dxAbs = Math.abs(currentX - startX);
+        var dyAbs = Math.abs(currentY - startY);
+        if (dxAbs > 6 || dyAbs > 6) {
+          isHorizontalSwipe = dxAbs > dyAbs;
+        }
+      }
+
+      if (!isHorizontalSwipe) return;
+
+      var now = performance.now();
+      var dt = now - lastTime;
+      var dx = currentX - lastX;
+      var totalDelta = currentX - startX;
+
+      if (Math.abs(totalDelta) > 3) {
+        hasDragged = true;
+      }
+
+      if (dt > 0) {
+        var instantV = dx / dt;
+        velocity = 0.75 * instantV + 0.25 * velocity;
+        lastX = currentX;
+        lastTime = now;
+      }
+
+      var dAngle = (dx / radius) * (180 / Math.PI);
+      currentAngle += dAngle;
+      requestDragRender();
+    }, { passive: true });
+
+    window.addEventListener('touchend', endDrag);
+    window.addEventListener('touchcancel', endDrag);
+
+    // 拖拽过程中拦截链接跳转
+    stage.addEventListener('click', function (e) {
+      if (hasDragged) {
+        e.preventDefault();
+        e.stopPropagation();
+        hasDragged = false;
+      }
+    }, true);
+
+    // 3. 自动悠闲缓慢巡航滑动 (Very Slow Ambient Drift)
+    var isHovered = false;
+    var lastInteractionTime = performance.now();
+    var autoDriftSpeed = -0.012; // 极缓速度：约 10 秒平移一张卡片，静谧悠闲
+    var prefersReducedMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    stage.addEventListener('mouseenter', function () {
+      isHovered = true;
+    });
+
+    stage.addEventListener('mouseleave', function () {
+      isHovered = false;
+      lastInteractionTime = performance.now();
+    });
+
+    function autoDriftLoop() {
+      if (!prefersReducedMotion && !isHovered && !isDown && !rafId && !document.hidden) {
+        if (performance.now() - lastInteractionTime > 800) {
+          currentAngle += autoDriftSpeed;
+          renderWheel(currentAngle);
+        }
+      }
+      requestAnimationFrame(autoDriftLoop);
+    }
+
+    requestAnimationFrame(autoDriftLoop);
+
+    // 窗口尺寸变更自适应
+    window.addEventListener('resize', function () {
+      updateRadius();
+      renderWheel(currentAngle);
+    });
+  })();
 })();

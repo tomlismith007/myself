@@ -29,14 +29,12 @@
       <div class="nav-links">
         <a href="#about">关于</a>
         <a href="#journey">经历</a>
-        <a href="#skills">技能</a>
+        <a href="#projects">作品</a>
+        <a href="#skills">技术栈</a>
+        <a href="#agent-skills">Skills</a>
         <a href="#honors">荣誉</a>
         <a href="#contact">联系</a>
       </div>
-      <a class="btn btn-primary btn-sm" href="assets/resume/李瑞祥简历_AIAgent产品研发.pdf" target="_blank" rel="noopener">
-        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-        简历
-      </a>
     </nav>
   </header>
 
@@ -64,10 +62,6 @@
             </li>
           </ul>
           <div class="hero-cta reveal" style="--d:.3s">
-            <a class="btn btn-primary" href="assets/resume/李瑞祥简历_AIAgent产品研发.pdf" target="_blank" rel="noopener">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-              查看简历
-            </a>
             <button class="btn btn-ghost" type="button" data-copy="3289243350@qq.com" data-toast="邮箱已复制">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
               复制邮箱
@@ -162,9 +156,9 @@
             </article>
           </li>
           <li class="tl-item reveal">
-            <article class="card tl-card tl-featured">
+            <article class="card tl-card">
               <div class="tl-meta">
-                <span class="tag tag-hot">核心项目</span>
+                <span class="tag">项目</span>
                 <time>2026.08-2026.09</time>
               </div>
               <h3>高校教务 AI Agent 助手<span class="tl-org">个人主导 · LangChain + LangGraph</span></h3>
@@ -225,8 +219,92 @@
       </div>
     </section>
 
+    <!-- 作品集 -->
+    <section class="section" id="projects">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="section-pill">作品集</span>
+          <h2>核心开源作品</h2>
+          <p>坚持自主研发与代码开源的两个代表性项目</p>
+        </header>
+        <div class="projects-grid">
+          <!-- edu_agent -->
+          <article class="card project-card reveal">
+            <div class="project-body">
+              <div class="project-header">
+                <div class="project-meta-left">
+                  <span class="project-icon" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/><circle cx="12" cy="16.5" r="1.5"/></svg>
+                  </span>
+                  <div class="project-title">
+                    <h3>edu_agent</h3>
+                    <p>高校教务 AI 智能助手</p>
+                  </div>
+                </div>
+              </div>
+              <div class="project-tags">
+                <span class="tag">LangGraph</span>
+                <span class="tag">多路 RAG</span>
+                <span class="tag">TypeScript</span>
+              </div>
+              <p class="project-desc">
+                基于 LangChain + LangGraph 构建的教务 Agent。支持成绩、课表与学分查询及培养方案问答，内置三层自愈中间件与混合召回管线。
+              </p>
+            </div>
+            <div class="project-footer">
+              <div class="project-lang">
+                <span class="lang-dot" aria-hidden="true"></span>
+                <span>TypeScript</span>
+              </div>
+              <a class="project-link" href="https://github.com/tomlismith007/edu_agent" target="_blank" rel="noopener">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <span>GitHub</span>
+                <svg class="icon icon-external" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- jsrev -->
+          <article class="card project-card reveal" style="--d:.08s">
+            <div class="project-body">
+              <div class="project-header">
+                <div class="project-meta-left">
+                  <span class="project-icon" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+                  </span>
+                  <div class="project-title">
+                    <h3>jsrev</h3>
+                    <p>双引擎浏览器逆向 MCP 工具包</p>
+                  </div>
+                </div>
+              </div>
+              <div class="project-tags">
+                <span class="tag">MCP 协议</span>
+                <span class="tag">Chromium CDP</span>
+                <span class="tag">Camoufox</span>
+              </div>
+              <p class="project-desc">
+                专为 AI Agent 打造的 JS 逆向工具集。深度结合 Chromium CDP 调试协议与 Camoufox 动态插桩，赋能 Agent 逆向复杂前端鉴权并采集真实数据。
+              </p>
+            </div>
+            <div class="project-footer">
+              <div class="project-lang">
+                <span class="lang-dot" aria-hidden="true"></span>
+                <span>TypeScript</span>
+              </div>
+              <a class="project-link" href="https://github.com/tomlismith007/jsrev" target="_blank" rel="noopener">
+                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                <span>GitHub</span>
+                <svg class="icon icon-external" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- 技能 -->
-    <section class="section" id="skills">
+    <section class="section section-tint" id="skills">
       <div class="container">
         <header class="section-head reveal">
           <span class="section-pill">技能</span>
@@ -262,21 +340,21 @@
               <span class="card-icon" aria-hidden="true">
                 <svg class="icon" viewBox="0 0 24 24"><rect x="4" y="9" width="16" height="11" rx="3"/><path d="M12 9V5"/><circle cx="12" cy="4" r="1"/><circle cx="9" cy="14.5" r="1.2"/><circle cx="15" cy="14.5" r="1.2"/><path d="M9.5 17.5h5"/></svg>
               </span>
-              <h3>AI 应用与 Agent</h3>
+              <h3>AI 编码与 Agent</h3>
             </div>
             <ul class="pills">
-              <li class="tag">AI Agent 开发</li>
-              <li class="tag">Prompt 设计</li>
-              <li class="tag">工作流编排</li>
-              <li class="tag">工具调用</li>
+              <li class="tag">Claude Code</li>
+              <li class="tag">Codex</li>
+              <li class="tag">OpenCode</li>
+              <li class="tag">Zcode</li>
+              <li class="tag">DeepSeek</li>
+              <li class="tag">DeepSeek Harness</li>
+              <li class="tag">Harness Engineering</li>
               <li class="tag">MCP</li>
-              <li class="tag">Skills</li>
-              <li class="tag">RAG</li>
+              <li class="tag">Agent Skills</li>
+              <li class="tag">Prompt 工程</li>
               <li class="tag">Function Calling</li>
-              <li class="tag">大模型应用</li>
-              <li class="tag">知识库</li>
-              <li class="tag">API 集成</li>
-              <li class="tag">自动化脚本</li>
+              <li class="tag">自动化工作流</li>
             </ul>
           </article>
           <article class="card skill-card reveal" style="--d:.16s">
@@ -284,24 +362,232 @@
               <span class="card-icon" aria-hidden="true">
                 <svg class="icon" viewBox="0 0 24 24"><path d="M14.7 6.3a4.5 4.5 0 0 0 6 6L17 16l-8.5 5a2.1 2.1 0 0 1-3-3l5-8.5z" transform="rotate(90 12 12)"/><path d="M14.7 6.3a4.5 4.5 0 0 0 6 6"/><path d="m3 3 4 4"/></svg>
               </span>
-              <h3>工具与工程实践</h3>
+              <h3>框架与工程实践</h3>
             </div>
             <ul class="pills">
-              <li class="tag">Claude Code</li>
-              <li class="tag">Codex</li>
-              <li class="tag">Zcode</li>
-              <li class="tag">OpenCode</li>
               <li class="tag">LangChain</li>
               <li class="tag">LangGraph</li>
               <li class="tag">Dify</li>
               <li class="tag">Coze</li>
               <li class="tag">n8n</li>
+              <li class="tag">RAG 管线</li>
+              <li class="tag">向量召回</li>
+              <li class="tag">API 逆向与集成</li>
               <li class="tag">Apifox</li>
               <li class="tag">VS Code</li>
+              <li class="tag">Git</li>
             </ul>
           </article>
         </div>
       </div>
+    </section>
+
+    <!-- Agent Skills 推荐 -->
+    <section class="section" id="agent-skills">
+      <div class="container">
+        <header class="section-head reveal">
+          <span class="section-pill">Agent Skills</span>
+          <h2>常用 Skills 实践推荐</h2>
+          <p>日常深度使用的 6 个开源 Agent 技能与规范</p>
+        </header>
+      </div>
+
+      <div class="skills-fan-stage" id="skills-fan-stage">
+        <div class="skills-arc-guide" aria-hidden="true"></div>
+        <div class="skills-fan-track" id="skills-fan-track">
+          <!-- 1. Karpathy Skills -->
+            <article class="card agent-skill-card">
+              <div class="agent-skill-body">
+                <div class="agent-skill-header">
+                  <span class="agent-skill-icon" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </span>
+                  <div class="agent-skill-title">
+                    <h3>Karpathy Skills</h3>
+                    <p class="agent-skill-author">multica-ai / karpathy-skills</p>
+                  </div>
+                </div>
+                <div class="agent-skill-tags">
+                  <span class="tag">CLAUDE.md</span>
+                  <span class="tag">避坑准则</span>
+                  <span class="tag">210k+ ★</span>
+                </div>
+                <blockquote class="agent-skill-quote">“源自 Karpathy 对 LLM 编码陷阱洞察的避坑规范。”</blockquote>
+                <p class="agent-skill-desc">
+                  系统提炼 AI 泰斗 Andrej Karpathy 对大模型编程缺陷的洞察。以极简单一指令规范 Agent 行为，杜绝幻觉、死循环与过度承诺。
+                </p>
+              </div>
+              <div class="agent-skill-footer">
+                <span class="agent-skill-type">Claude Code · Rules</span>
+                <a class="agent-skill-link" href="https://github.com/multica-ai/andrej-karpathy-skills" target="_blank" rel="noopener">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>GitHub</span>
+                  <svg class="icon icon-external" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- 2. Impeccable -->
+            <article class="card agent-skill-card">
+              <div class="agent-skill-body">
+                <div class="agent-skill-header">
+                  <span class="agent-skill-icon" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                  </span>
+                  <div class="agent-skill-title">
+                    <h3>Impeccable</h3>
+                    <p class="agent-skill-author">pbakaus / impeccable</p>
+                  </div>
+                </div>
+                <div class="agent-skill-tags">
+                  <span class="tag">设计语言</span>
+                  <span class="tag">Design Language</span>
+                  <span class="tag">66k+ ★</span>
+                </div>
+                <blockquote class="agent-skill-quote">“让你的 AI Harness 具备专业级视觉审美的设计系统。”</blockquote>
+                <p class="agent-skill-desc">
+                  由前 jQuery UI 负责人 Paul Bakaus 发起的设计系统。为 AI Harness 注入成熟的设计语法与排版裁决，让智能体输出真正高级的交互界面。
+                </p>
+              </div>
+              <div class="agent-skill-footer">
+                <span class="agent-skill-type">Harness · Design</span>
+                <a class="agent-skill-link" href="https://github.com/pbakaus/impeccable" target="_blank" rel="noopener">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>GitHub</span>
+                  <svg class="icon icon-external" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- 3. DESIGN.md -->
+            <article class="card agent-skill-card">
+              <div class="agent-skill-body">
+                <div class="agent-skill-header">
+                  <span class="agent-skill-icon" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+                  </span>
+                  <div class="agent-skill-title">
+                    <h3>DESIGN.md</h3>
+                    <p class="agent-skill-author">google-labs-code / design.md</p>
+                  </div>
+                </div>
+                <div class="agent-skill-tags">
+                  <span class="tag">Google Labs</span>
+                  <span class="tag">格式规范</span>
+                  <span class="tag">27k+ ★</span>
+                </div>
+                <blockquote class="agent-skill-quote">“Google Labs 推出的面向 Coding Agent 的设计标准规范。”</blockquote>
+                <p class="agent-skill-desc">
+                  用于向 Coding Agent 结构化描述视觉标识的格式标准。赋予 Agent 对设计系统的持久记忆与深层理解，打通从品牌设计到前端工程的代码落地。
+                </p>
+              </div>
+              <div class="agent-skill-footer">
+                <span class="agent-skill-type">Specification · UI</span>
+                <a class="agent-skill-link" href="https://github.com/google-labs-code/design.md" target="_blank" rel="noopener">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>GitHub</span>
+                  <svg class="icon icon-external" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- 4. Harness Creator -->
+            <article class="card agent-skill-card">
+              <div class="agent-skill-body">
+                <div class="agent-skill-header">
+                  <span class="agent-skill-icon" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="11" r="3"/></svg>
+                  </span>
+                  <div class="agent-skill-title">
+                    <h3>Harness Creator</h3>
+                    <p class="agent-skill-author">walkinglabs / harness-creator</p>
+                  </div>
+                </div>
+                <div class="agent-skill-tags">
+                  <span class="tag">工程化约束</span>
+                  <span class="tag">验证门禁</span>
+                  <span class="tag">会话交接</span>
+                </div>
+                <blockquote class="agent-skill-quote">“构建长任务自治约束体系，杜绝上下文漂移。”</blockquote>
+                <p class="agent-skill-desc">
+                  针对 Agent 跨会话失忆、任务跑偏和未测谎称完成的痼疾，构建完整的五大子系统：指令注入（AGENTS.md）、状态持久追踪、前置自动化验证门禁与会话交接。
+                </p>
+              </div>
+              <div class="agent-skill-footer">
+                <span class="agent-skill-type">Harness Engineering</span>
+                <a class="agent-skill-link" href="https://github.com/walkinglabs/learn-harness-engineering/tree/main/skills/harness-creator" target="_blank" rel="noopener">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>GitHub</span>
+                  <svg class="icon icon-external" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- 5. Taste-Skill -->
+            <article class="card agent-skill-card">
+              <div class="agent-skill-body">
+                <div class="agent-skill-header">
+                  <span class="agent-skill-icon" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.93 0 1.5-.68 1.5-1.5 0-.38-.15-.74-.39-1.01-.24-.26-.39-.63-.39-1.01 0-.83.67-1.5 1.5-1.5H16c3.31 0 6-2.69 6-6 0-4.97-4.48-9-10-9z"/></svg>
+                  </span>
+                  <div class="agent-skill-title">
+                    <h3>Taste-Skill</h3>
+                    <p class="agent-skill-author">Leonxlnx / taste-skill</p>
+                  </div>
+                </div>
+                <div class="agent-skill-tags">
+                  <span class="tag">Anti-Slop</span>
+                  <span class="tag">设计系统</span>
+                  <span class="tag">意图推断</span>
+                </div>
+                <blockquote class="agent-skill-quote">“拒绝模板化廉价感，注入工业级审美裁决。”</blockquote>
+                <p class="agent-skill-desc">
+                  彻底消除 AI 生成界面的“塑料感与拼凑味”。在代码生成前先对设计意图进行深度推断，以严格的字体梯度、呼吸留白与物理动效驱动 Agent 输出高质感前端代码。
+                </p>
+              </div>
+              <div class="agent-skill-footer">
+                <span class="agent-skill-type">Frontend · UI Taste</span>
+                <a class="agent-skill-link" href="https://github.com/Leonxlnx/taste-skill" target="_blank" rel="noopener">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>GitHub</span>
+                  <svg class="icon icon-external" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- 6. Ponytail -->
+            <article class="card agent-skill-card">
+              <div class="agent-skill-body">
+                <div class="agent-skill-header">
+                  <span class="agent-skill-icon" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+                  </span>
+                  <div class="agent-skill-title">
+                    <h3>Ponytail</h3>
+                    <p class="agent-skill-author">DietrichGebert / ponytail</p>
+                  </div>
+                </div>
+                <div class="agent-skill-tags">
+                  <span class="tag">极简决策</span>
+                  <span class="tag">YAGNI 原则</span>
+                  <span class="tag">防代码过载</span>
+                </div>
+                <blockquote class="agent-skill-quote">“The best code is the code you never wrote.”</blockquote>
+                <p class="agent-skill-desc">
+                  专治 AI 编码助手过度工程化与滥造轮子的痛点。通过注入 7 层决策阶梯（是否存在、是否已有、原生能力能否满足），强迫 Agent 先思后写，输出最小可行且高度可维护的代码。
+                </p>
+              </div>
+              <div class="agent-skill-footer">
+                <span class="agent-skill-type">Claude Code · Codex</span>
+                <a class="agent-skill-link" href="https://github.com/DietrichGebert/ponytail" target="_blank" rel="noopener">
+                  <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+                  <span>GitHub</span>
+                  <svg class="icon icon-external" viewBox="0 0 24 24" aria-hidden="true"><line x1="7" y1="17" x2="17" y2="7"/><polyline points="7 7 17 7 17 17"/></svg>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
     </section>
 
     <!-- 荣誉 -->
@@ -389,7 +675,7 @@
 
   <footer class="site-footer">
     <p>© 2026 李瑞祥 · AI Agent 产品研发</p>
-    <p class="footer-meta">Deployed on <a href="https://pages.cloudflare.com" target="_blank" rel="noopener">Cloudflare Pages</a></p>
+    <p class="footer-meta">用工程化思维 × AI 能力，做能落地的产品</p>
   </footer>
 
   <div class="toast" role="status" aria-live="polite"></div>

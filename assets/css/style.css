@@ -219,12 +219,19 @@ svg.icon {
               border-color .2s ease,
               color .2s ease;
   user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+.btn:focus:not(:focus-visible) {
+  outline: none;
 }
 .btn-sm { height: 36px; padding: 0 16px; font-size: 13px; }
 
 /* 主 CTA 胶囊：深曜石黑底 + 纯白文字 + 顶部内光倒角 + 沉稳软阴影 */
 .btn-primary {
-  background: linear-gradient(180deg, #1F2937 0%, var(--btn-dark) 100%);
+  background-color: var(--btn-dark);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
   color: #FFFFFF;
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.22),
@@ -232,16 +239,18 @@ svg.icon {
               0 8px 20px -4px rgba(17, 24, 39, 0.28);
 }
 .btn-primary:hover {
-  transform: translateY(-1.5px);
-  background: var(--btn-dark-hover);
+  transform: translateY(-1.5px) translateZ(0);
+  background-color: var(--btn-dark-hover);
   color: #FFFFFF;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.32),
               0 4px 8px rgba(0, 0, 0, 0.12),
               0 14px 28px -6px rgba(17, 24, 39, 0.38);
 }
 .btn-primary:active {
-  transform: translateY(0) scale(0.98);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  transform: translateY(0) scale(0.98) translateZ(0);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16),
+              0 1px 2px rgba(0, 0, 0, 0.1),
+              0 4px 10px -2px rgba(17, 24, 39, 0.24);
 }
 .btn-primary .icon { color: #FFFFFF; }
 
@@ -256,11 +265,11 @@ svg.icon {
   background: #FAFAFA;
   border-color: rgba(17, 24, 39, 0.36);
   color: #000000;
-  transform: translateY(-1px);
+  transform: translateY(-1px) translateZ(0);
   box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.08);
 }
 .btn-ghost:active {
-  transform: scale(0.98);
+  transform: scale(0.98) translateZ(0);
 }
 .btn-copied {
   background: #111827 !important;
@@ -551,12 +560,287 @@ svg.icon {
 }
 
 /* ==========================================================================
+   作品集
+   ========================================================================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 26px 24px;
+}
+.project-body {
+  display: flex;
+  flex-direction: column;
+}
+.project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.project-meta-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.project-icon {
+  width: 46px; height: 46px; border-radius: 14px;
+  display: grid; place-items: center;
+  background: var(--brand-soft); color: var(--brand-deep);
+  border: 1px solid rgba(5, 150, 105, 0.22);
+  flex: none;
+}
+.project-icon .icon { width: 23px; height: 23px; }
+.project-title h3 {
+  font-size: 19px; font-weight: 700; color: var(--ink); line-height: 1.3;
+}
+.project-title p {
+  font-size: 13.5px; color: var(--ink-3); margin-top: 2px;
+}
+.project-tags {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 16px;
+}
+.project-tags .tag {
+  font-size: 12px; padding: 3px 11px; font-weight: 600;
+  background: var(--bg); border-color: var(--line);
+  color: var(--ink-2);
+}
+.project-desc {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.68;
+  margin-bottom: 20px;
+}
+.project-footer {
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+.project-lang {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink-2);
+}
+.lang-dot {
+  width: 9px; height: 9px; border-radius: 50%;
+  background: #3178C6;
+  box-shadow: 0 0 0 2px rgba(49, 120, 198, 0.2);
+}
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  font-weight: 650;
+  color: #FFFFFF;
+  padding: 8px 18px;
+  border-radius: var(--r-pill);
+  background-color: var(--btn-dark);
+  background-image: linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0%, rgba(255, 255, 255, 0) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 2px 6px rgba(17, 24, 39, 0.18);
+  transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+  transform: translateZ(0);
+}
+.project-link:hover {
+  background-color: var(--btn-dark-hover);
+  color: #FFFFFF;
+  transform: translateY(-1.5px) translateZ(0);
+  box-shadow: 0 6px 16px -2px rgba(17, 24, 39, 0.32);
+}
+.project-link .icon { width: 14px; height: 14px; }
+.project-link .icon-external { width: 12px; height: 12px; opacity: .75; }
+
+/* ==========================================================================
    技能
    ========================================================================== */
 .skills-grid {
   display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; align-items: stretch;
 }
 .skill-card .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* ==========================================================================
+   Agent Skills 扇形圆环无限轮盘 (Fan Carousel)
+   ========================================================================== */
+.skills-fan-stage {
+  position: relative;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  height: 520px;
+  overflow: hidden;
+  cursor: grab;
+  user-select: none;
+  touch-action: pan-y;
+}
+.skills-fan-stage.is-dragging {
+  cursor: grabbing;
+}
+.skills-fan-stage.is-dragging * {
+  cursor: grabbing !important;
+  user-select: none !important;
+}
+
+/* 优雅的背景圆环虚线轨道指示，强化“圆环”意象 */
+.skills-arc-guide {
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  width: 2700px;
+  height: 2700px;
+  margin-left: -1350px;
+  border-radius: 50%;
+  border: 1.5px dashed rgba(5, 150, 105, 0.22);
+  box-shadow: 0 0 60px rgba(5, 150, 105, 0.05);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* 底部柔和渐变遮罩，沉入地平线的卡片自然隐去 */
+.skills-fan-stage::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 90px;
+  background: linear-gradient(to bottom, transparent, var(--bg) 95%);
+  pointer-events: none;
+  z-index: 105;
+}
+
+.skills-fan-track {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.skills-fan-stage .agent-skill-card {
+  position: absolute;
+  left: 50%;
+  top: 18px;
+  width: 320px;
+  margin-left: -160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 24px 22px;
+  pointer-events: auto;
+  will-change: transform, opacity;
+  transform-style: flat;
+  backface-visibility: hidden;
+  box-shadow: 0 12px 28px -6px rgba(15, 23, 42, 0.1), 0 4px 10px -2px rgba(15, 23, 42, 0.05);
+  transition: box-shadow .2s ease, border-color .2s ease !important; /* 仅允许阴影与边框过渡，严禁介入 transform */
+}
+
+/* 拖拽期间全面关闭卡片事件，防止鼠标跨卡片时触发密集 hover 闪烁 */
+.skills-fan-stage.is-dragging .agent-skill-card {
+  pointer-events: none !important;
+}
+
+/* 仅在完全静止悬停时允许边框/阴影高亮，保持轮盘原始旋转角度不变 */
+.skills-fan-stage:not(.is-dragging) .agent-skill-card:hover {
+  box-shadow: 0 22px 42px -10px rgba(15, 23, 42, 0.2), 0 0 0 1px rgba(5, 150, 105, 0.35);
+}
+.agent-skill-body {
+  display: flex;
+  flex-direction: column;
+}
+.agent-skill-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 14px;
+}
+.agent-skill-icon {
+  width: 44px; height: 44px; border-radius: 12px;
+  display: grid; place-items: center;
+  background: var(--brand-soft); color: var(--brand-deep);
+  border: 1px solid rgba(5, 150, 105, 0.2);
+  flex: none;
+}
+.agent-skill-icon .icon { width: 22px; height: 22px; }
+.agent-skill-title h3 {
+  font-size: 17.5px; font-weight: 700; color: var(--ink); line-height: 1.3;
+}
+.agent-skill-author {
+  font-size: 12.5px; color: var(--ink-3); margin-top: 2px;
+}
+.agent-skill-tags {
+  display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px;
+}
+.agent-skill-tags .tag {
+  font-size: 11.5px; padding: 2px 10px; font-weight: 600;
+  background: var(--bg); border-color: var(--line);
+  color: var(--ink-2);
+}
+.agent-skill-quote {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--brand-deep);
+  background: rgba(5, 150, 105, 0.06);
+  border-left: 3px solid var(--brand);
+  padding: 8px 12px;
+  border-radius: 4px 8px 8px 4px;
+  margin-bottom: 14px;
+  line-height: 1.5;
+}
+.agent-skill-desc {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.68;
+  margin-bottom: 20px;
+}
+.agent-skill-footer {
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+.agent-skill-type {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-3);
+}
+.agent-skill-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12.5px;
+  font-weight: 650;
+  color: var(--ink);
+  padding: 6px 13px;
+  border-radius: var(--r-pill);
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  transition: all .2s ease;
+}
+.agent-skill-link:hover {
+  background: #111827;
+  color: #FFFFFF;
+  border-color: #111827;
+  transform: translateY(-1px);
+}
+.agent-skill-link .icon { width: 14px; height: 14px; }
+.agent-skill-link .icon-external { width: 12px; height: 12px; opacity: .7; }
 
 /* ==========================================================================
    荣誉
@@ -632,7 +916,14 @@ svg.icon {
    ========================================================================== */
 @media (max-width: 960px) {
   .hero-stats { grid-template-columns: repeat(2, 1fr); }
+  .projects-grid { grid-template-columns: 1fr; }
   .skills-grid { grid-template-columns: 1fr; }
+  .skills-fan-stage { height: 500px; }
+  .skills-fan-stage .agent-skill-card {
+    width: 290px;
+    margin-left: -145px;
+    padding: 22px 20px;
+  }
   .honors-grid { grid-template-columns: repeat(2, 1fr); }
   .about-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; max-width: 520px; }
@@ -723,6 +1014,12 @@ svg.icon {
   .tl-item::before { width: 13px; height: 13px; border-width: 3px; top: 26px; }
   .honors-grid { grid-template-columns: 1fr; }
   .card { padding: 22px 20px; }
+  .skills-fan-stage { height: 470px; }
+  .skills-fan-stage .agent-skill-card {
+    width: 260px;
+    margin-left: -130px;
+    padding: 20px 18px;
+  }
 }
 
 /* Reduced motion：遵循无障碍规范，关闭一切自主动画 */
