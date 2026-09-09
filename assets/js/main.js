@@ -470,4 +470,13 @@
       renderWheel(currentAngle);
     });
   })();
+
+  /* 埋点事件委托：带 data-track 的元素被点击时上报自定义事件
+     依赖统计脚本（window.pa.track），未加载时零副作用 */
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('[data-track]');
+    if (el && window.pa && typeof window.pa.track === 'function') {
+      window.pa.track(el.getAttribute('data-track'), el.getAttribute('data-track-value') || '');
+    }
+  }, { capture: true });
 })();
