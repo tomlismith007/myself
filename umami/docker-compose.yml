@@ -1,0 +1,60 @@
+# Umami 统计服务 · Docker Compose
+# 架构：nginx(宿主机 443) → umami(仅监听本机 3000) → postgres(仅容器内网)
+# 用法：cd /opt/umami && docker compose up -d
+# 注意：本目录的 .env 由你在服务器上生成（见 UMAMI_DEPLOY.md 第 3 步），不要提交到 git
+
+services:
+  umami:
+    image: docker.umami.is/umami-software/umami:postgresql-latest
+    container_name: umami
+    # 只绑定本机回环地址：公网只能通过 nginx 进来，不能直连 3000 端口
+    ports:
+      - "127.0.0.1:3000:3000"
+    environment:
+      DATABASE_URL: postgresql://umami:${POSTGRES_PASSWORD}@postgres:5432/umami
+      DATABASE_TYPE: postgresql
+      APP_SECRET: ${APP_SECRET}
+      # 关闭版本更新检查（减少外联请求）
+      DISABLE_UPDATES: "1"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    healthcheck:
+      # 首次启动 prisma 迁移需要 1-2 分钟，interval 放宽
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:3000/api/heartbeat || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 180s
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  postgres:
+    image: postgres:16-alpine
+    container_name: umami-postgres
+    environment:
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: umami
+    volumes:
+      # 数据持久化：统计历史全在这里，切勿删除此卷
+      - umami-db:/var/lib/postgresql/data
+    # 不写 ports：仅容器内网可达，公网完全不可见
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U umami -d umami"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  umami-db:

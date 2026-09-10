@@ -11,6 +11,9 @@ node_modules/
 dist/
 .cache/
 
+# Umami 部署密钥（真实环境变量文件只在服务器上生成）
+umami/.env
+
 # 系统与编辑器杂项
 .DS_Store
 Thumbs.db
