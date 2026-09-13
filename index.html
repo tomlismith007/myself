@@ -62,18 +62,164 @@
             </li>
           </ul>
           <div class="hero-cta reveal" style="--d:.3s">
-            <button class="btn btn-ghost" type="button" data-copy="3289243350@qq.com" data-toast="邮箱已复制" data-track="copy_email" data-track-value="hero">
-              <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
-              复制邮箱
+            <button class="hero-email-capsule" type="button" data-copy="3289243350@qq.com" data-toast="邮箱已复制" data-track="copy_email" data-track-value="hero" aria-label="点击复制邮箱 3289243350@qq.com">
+              <svg class="capsule-mail-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></svg>
+              <span class="capsule-email-text">3289243350@qq.com</span>
+              <span class="capsule-copy-action" title="复制邮箱" aria-hidden="true">
+                <svg class="icon-copy" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                <svg class="icon-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+              </span>
             </button>
           </div>
         </div>
-        <dl class="hero-stats reveal" style="--d:.4s">
-          <div class="stat"><dt>实习经历</dt><dd>2<small>段</small></dd></div>
-          <div class="stat"><dt>项目实战</dt><dd>5<small>个</small></dd></div>
-          <div class="stat"><dt>荣誉奖项</dt><dd>8<small>项</small></dd></div>
-          <div class="stat"><dt>核心数据模型</dt><dd>6<small>个</small></dd></div>
-        </dl>
+        <!-- 成长与实战极简流动长河 -->
+        <div class="decarded-timeline-stage reveal" style="--d:.4s" aria-label="成长与实战脉络">
+          <div class="timeline-stage-wrapper">
+            <!-- 固定的背景光带层（从左边一直显示到中间，无自身流光，静谧恒光） -->
+            <div class="static-light-beam-track" aria-hidden="true">
+              <div class="static-beam-left-to-center"></div>
+              <div class="beam-center-focal-point"></div>
+              <div class="static-beam-right-faint"></div>
+            </div>
+
+            <!-- 靠事件自身流转实现宏观动效（两组 13 节点完全无缝循环） -->
+            <div class="event-stream-track">
+              <!-- 第一组 13 个节点（间距一律保持 120px） -->
+              <div class="stream-event-item">
+                <span class="event-time-top">2022.09</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">大学开学</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2023.09</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">110护卫队副队长</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2023.12</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">保险可视化分析</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2024.09</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">110护卫队总队长</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2024.10</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">创新大赛校赛一等奖</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2024.11</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">创新大赛省赛三等奖</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2024.12</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">校一等奖学金 · 三好</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2025.03</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">「挑战杯」校赛一等奖</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2025.04</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">荣获优秀团员</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2025.12</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">校二等奖学金 · 优干</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2026.04</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">湖南云启三思实习</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2026.06</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">结束企业实习</span>
+              </div>
+              <div class="stream-event-item is-now">
+                <span class="event-time-top">至今</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">深耕 AI Agent 研发</span>
+              </div>
+
+              <!-- 第二组（完全相同用于无缝无限循环） -->
+              <div class="stream-event-item">
+                <span class="event-time-top">2022.09</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">大学开学</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2023.09</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">110护卫队副队长</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2023.12</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">保险可视化分析</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2024.09</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">110护卫队总队长</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2024.10</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">创新大赛校赛一等奖</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2024.11</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">创新大赛省赛三等奖</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2024.12</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">校一等奖学金 · 三好</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2025.03</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">「挑战杯」校赛一等奖</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2025.04</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">荣获优秀团员</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2025.12</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">校二等奖学金 · 优干</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2026.04</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">湖南云启三思实习</span>
+              </div>
+              <div class="stream-event-item">
+                <span class="event-time-top">2026.06</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">结束企业实习</span>
+              </div>
+              <div class="stream-event-item is-now">
+                <span class="event-time-top">至今</span>
+                <span class="event-mid-gap"></span>
+                <span class="event-title-bottom">深耕 AI Agent 研发</span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 

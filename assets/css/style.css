@@ -361,39 +361,263 @@ svg.icon {
   100% { box-shadow: 0 0 0 0 rgba(5, 150, 105, 0); }
 }
 .tag-ghost { background: #FFFFFF; border: 1px solid var(--line-strong); color: var(--ink-2); }
-.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
+.hero-cta { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 18px; }
 
-/* Hero Bento 统计卡：至纯白实体卡片，在柔白底上明亮凸显 */
-.hero-stats {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px;
-  grid-column: 1 / -1;
-  width: 100%; margin-top: 40px;
-}
-.stat {
-  background: var(--surface-card); /* #FFFFFF */
-  border: 1px solid var(--line);
-  border-radius: 15px;
-  box-shadow: var(--shadow-card);
-  padding: 18px 14px 16px;
-  display: flex; flex-direction: column-reverse; align-items: center; gap: 4px;
+/* 方案一：Hero 极简邮箱交互胶囊 */
+.hero-email-capsule {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  height: 36px;
+  padding: 0 12px 0 14px;
+  background: #FFFFFF;
+  border: 1px solid rgba(20, 36, 26, 0.12);
+  border-radius: var(--r-pill);
+  box-shadow: 0 1px 2px rgba(15, 23, 19, 0.03);
+  cursor: pointer;
+  user-select: none;
+  transition: transform .2s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color .2s ease,
+              box-shadow .2s ease,
+              background-color .2s ease;
   position: relative;
+  font-family: inherit;
+}
+.hero-email-capsule:hover {
+  transform: translateY(-1.5px);
+  border-color: rgba(5, 150, 105, 0.38);
+  box-shadow: 0 4px 14px -2px rgba(5, 150, 105, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+}
+.hero-email-capsule:active {
+  transform: translateY(0) scale(0.98);
+}
+.capsule-mail-icon {
+  width: 14px;
+  height: 14px;
+  color: var(--ink-2);
+  transition: color .2s ease;
+  flex-shrink: 0;
+}
+.hero-email-capsule:hover .capsule-mail-icon {
+  color: var(--brand);
+}
+.capsule-email-text {
+  font-size: 13.5px;
+  font-weight: 600;
+  color: var(--ink);
+  letter-spacing: 0.2px;
+  font-variant-numeric: tabular-nums;
+}
+.capsule-copy-action {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(20, 36, 26, 0.04);
+  margin-left: 2px;
+  position: relative;
+  transition: background-color .2s ease, color .2s ease;
+}
+.hero-email-capsule:hover .capsule-copy-action {
+  background: var(--brand-soft);
+  color: var(--brand-deep);
+}
+.capsule-copy-action svg {
+  width: 12px;
+  height: 12px;
+  transition: all .2s ease;
+  position: absolute;
+}
+.capsule-copy-action .icon-check {
+  opacity: 0;
+  transform: scale(0.5);
+  color: var(--brand);
+}
+.hero-email-capsule.btn-copied,
+.hero-email-capsule.is-copied {
+  border-color: var(--brand) !important;
+  background: #FFFFFF !important;
+}
+.hero-email-capsule.btn-copied .capsule-copy-action,
+.hero-email-capsule.is-copied .capsule-copy-action {
+  background: var(--brand-soft);
+  color: var(--brand);
+}
+.hero-email-capsule.btn-copied .capsule-copy-action .icon-copy,
+.hero-email-capsule.is-copied .capsule-copy-action .icon-copy {
+  opacity: 0;
+  transform: scale(0.5);
+}
+.hero-email-capsule.btn-copied .capsule-copy-action .icon-check,
+.hero-email-capsule.is-copied .capsule-copy-action .icon-check {
+  opacity: 1;
+  transform: scale(1);
+}
+
+/* ==========================================================================
+   Hero 成长与实战极简流动长河（左至中光带 · 间距 120px · 纯粹排印）
+   ========================================================================== */
+.decarded-timeline-stage {
+  grid-column: 1 / -1;
+  width: 100%;
+  margin-top: 36px;
+  position: relative;
+}
+
+.timeline-stage-wrapper {
+  position: relative;
+  width: 100%;
   overflow: hidden;
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  padding: 34px 0 28px;
+  /* 两侧 80px 柔和渐隐蒙版，沉浸式虚化延展 */
+  mask-image: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 8%,
+    rgba(0, 0, 0, 1) 92%,
+    transparent 100%);
+  -webkit-mask-image: linear-gradient(90deg,
+    transparent 0%,
+    rgba(0, 0, 0, 1) 8%,
+    rgba(0, 0, 0, 1) 92%,
+    transparent 100%);
+}
+
+/* 固定的背景光带层（位于上下文字的正中央空隙） */
+.static-light-beam-track {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 2px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 从左边开始，光带一直显示到中间 (0% ~ 50%)，静谧恒光 */
+.static-beam-left-to-center {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 2px;
+  background: linear-gradient(90deg,
+    rgba(5, 150, 105, 0.1) 0%,
+    #059669 35%,
+    #10B981 85%,
+    #34D399 100%
+  );
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.55), 0 0 2px #10B981;
+  border-radius: 1px;
+}
+
+/* 中间汇聚锚标 (50% 处) */
+.beam-center-focal-point {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10B981;
+  box-shadow: 0 0 10px rgba(16, 185, 129, 0.9), 0 0 0 2px rgba(255, 255, 255, 0.9);
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+/* 右半段微暗引导线 (50% ~ 100%) */
+.static-beam-right-faint {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 1.5px;
+  background: rgba(20, 36, 26, 0.08);
+}
+
+/* 内部连续平滑滚动的事件长带（靠事件自身流转实现动效） */
+.event-stream-track {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  width: max-content;
+  animation: eventStreamRun 50s linear infinite;
+  will-change: transform;
 }
 @media (hover: hover) {
-  .stat:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-pop);
-    border-color: rgba(17, 24, 39, 0.16);
+  .timeline-stage-wrapper:hover .event-stream-track {
+    animation-play-state: paused;
   }
 }
-.stat dd {
-  font-size: 30px; font-weight: 750; color: #111827; line-height: 1.15;
-  font-variant-numeric: tabular-nums;
-  letter-spacing: -0.5px;
+@keyframes eventStreamRun {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
-.stat dd small { font-size: 13px; font-weight: 500; color: var(--ink-2); margin-left: 3px; }
-.stat dt { font-size: 13px; font-weight: 500; color: var(--ink-2); }
+
+/* 单个事件节点：时间在上面，标题在下面，中间无点，纯文字排印 */
+.stream-event-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: default;
+  transition: transform .2s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
+  flex-shrink: 0;
+  margin-right: 120px;
+}
+@media (hover: hover) {
+  .stream-event-item:hover {
+    transform: translateY(-2.5px);
+  }
+}
+
+/* 时间在上方 */
+.event-time-top {
+  font-size: 11.5px;
+  font-weight: 750;
+  color: var(--brand-deep);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.4px;
+  white-space: nowrap;
+  line-height: 1;
+  margin-bottom: 7px;
+  transition: color .2s ease;
+}
+@media (hover: hover) {
+  .stream-event-item:hover .event-time-top {
+    color: var(--brand);
+  }
+}
+
+/* 中间留出光带贯穿的微型空间 */
+.event-mid-gap {
+  width: 1px;
+  height: 2px;
+}
+
+/* 纯净事件标题在下方 */
+.event-title-bottom {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--ink);
+  white-space: nowrap;
+  line-height: 1;
+  margin-top: 7px;
+  transition: color .2s ease;
+}
+@media (hover: hover) {
+  .stream-event-item:hover .event-title-bottom {
+    color: var(--brand);
+  }
+}
+.stream-event-item.is-now .event-title-bottom {
+  color: var(--brand-deep);
+  font-weight: 800;
+}
 
 /* ==========================================================================
    通用区块 —— 柔和净白底，微透渐变制造呼吸节奏
@@ -1063,24 +1287,24 @@ svg.icon {
 .style-editorial-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 16px;
+  gap: 14px;
   margin-top: 14px;
-  padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid var(--line);
-  border-radius: 12px;
-  transition: background-color .2s ease, border-color .2s ease;
-}
-@media (hover: hover) {
-  .spotlight-card:hover .style-editorial-row {
-    background: #FFFFFF;
-    border-color: rgba(5, 150, 105, 0.2);
-    box-shadow: 0 4px 12px -2px rgba(15, 23, 19, 0.04);
-  }
+  background: transparent;
 }
 .editorial-cell {
-  border-left: 2.5px solid var(--brand);
-  padding-left: 12px;
+  background: transparent;
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--brand);
+  border-radius: 10px;
+  padding: 10px 14px;
+  transition: border-color .2s ease;
+}
+@media (hover: hover) {
+  .spotlight-card:hover .editorial-cell {
+    background: transparent;
+    border-color: rgba(5, 150, 105, 0.26);
+    border-left-color: var(--brand);
+  }
 }
 .editorial-cell h4 {
   font-size: 16px;
@@ -1395,6 +1619,8 @@ svg.icon {
     margin-left: -130px;
     padding: 20px 18px;
   }
+  .stream-event-item { margin-right: 80px; }
+  .event-title-bottom { font-size: 12.5px; }
 }
 
 /* Reduced motion：遵循无障碍规范，关闭一切自主动画 */
@@ -1411,4 +1637,5 @@ svg.icon {
   .tag-status .pulse { animation: none !important; }
   .kinetic-flip-track { animation: none !important; }
   .energy-bar { animation: none !important; }
+  .event-stream-track { animation: none !important; }
 }
