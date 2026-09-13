@@ -514,45 +514,160 @@
     <!-- 荣誉 -->
     <section class="section" id="honors">
       <div class="container">
-        <header class="section-head reveal">
-          <span class="section-pill">荣誉</span>
-          <h2>一些值得记住的认可</h2>
-          <p>竞赛、奖学金与个人荣誉</p>
+        <header class="section-head section-head-dynamic reveal">
+          <span class="section-pill">荣誉与认可</span>
+          <div class="kinetic-flip-h2" style="margin-top: 8px;">
+            <span>每一份认可，都源于</span>
+            <span class="kinetic-flip-box" aria-live="polite">
+              <span class="kinetic-flip-track">
+                <span class="kinetic-word">「对实战攻坚的执着」</span>
+                <span class="kinetic-word">「挑战极限的科创双创」</span>
+                <span class="kinetic-word">「持续卓越的专业追求」</span>
+              </span>
+            </span>
+            <span class="energy-bars" aria-hidden="true" title="持续攻坚输出">
+              <span class="energy-bar"></span>
+              <span class="energy-bar"></span>
+              <span class="energy-bar"></span>
+              <span class="energy-bar"></span>
+            </span>
+          </div>
+          <p class="header-sub-clean">科创竞赛 · 学业拔尖 · 骨干先锋全景呈现</p>
         </header>
-        <ul class="honors-grid">
-          <li class="honor reveal">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 5H4v2a3 3 0 0 0 3 3"/><path d="M17 5h3v2a3 3 0 0 1-3 3"/></svg>
-            <div><strong>「挑战杯」一等奖</strong><span>第十六届大学生科技作品竞赛</span></div>
-          </li>
-          <li class="honor reveal" style="--d:.05s">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 5H4v2a3 3 0 0 0 3 3"/><path d="M17 5h3v2a3 3 0 0 1-3 3"/></svg>
-            <div><strong>创新大赛校赛一等奖</strong><span>中国国际大学生创新大赛</span></div>
-          </li>
-          <li class="honor reveal" style="--d:.1s">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 21h8"/><path d="M12 17v4"/><path d="M7 4h10v4a5 5 0 0 1-10 0z"/><path d="M7 5H4v2a3 3 0 0 0 3 3"/><path d="M17 5h3v2a3 3 0 0 1-3 3"/></svg>
-            <div><strong>省赛三等奖</strong><span>湖南省大学生创新大赛</span></div>
-          </li>
-          <li class="honor reveal" style="--d:.15s">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 15 8l7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
-            <div><strong>校级一等奖学金</strong><span>学业成绩</span></div>
-          </li>
-          <li class="honor reveal" style="--d:.2s">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 15 8l7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
-            <div><strong>校级二等奖学金</strong><span>学业成绩</span></div>
-          </li>
-          <li class="honor reveal" style="--d:.25s">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <div><strong>三好学生</strong><span>个人荣誉</span></div>
-          </li>
-          <li class="honor reveal" style="--d:.3s">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-            <div><strong>优秀团员</strong><span>个人荣誉</span></div>
-          </li>
-          <li class="honor reveal" style="--d:.35s">
-            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
-            <div><strong>优秀学生干部</strong><span>个人荣誉</span></div>
-          </li>
-        </ul>
+
+        <div class="bento-honors-wrap">
+          <!-- 上半部：左大卡片 (1.35fr) + 右双中卡片 (1fr) -->
+          <div class="bento-top-row">
+            
+            <!-- 左侧大卡片：中国国际大学生创新大赛（互联网+）[款式 C：通栏极简排印] -->
+            <article class="spotlight-card bento-hero-card reveal">
+              <div>
+                <div class="hero-honor-head">
+                  <div class="hero-honor-badges">
+                    <span class="badge-obsidian">重点双创</span>
+                    <span class="badge-emerald">双项荣誉</span>
+                  </div>
+                  <div class="honor-trophy-icon" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/><path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/></svg>
+                  </div>
+                </div>
+
+                <div class="hero-honor-body">
+                  <h3 class="hero-competition-title">中国国际大学生创新大赛</h3>
+                  <p class="hero-competition-alias">原「互联网+」大学生创新创业大赛</p>
+
+                  <!-- 款式 C：通栏极简排印 -->
+                  <div class="style-editorial-row">
+                    <div class="editorial-cell">
+                      <h4>校赛一等奖</h4>
+                      <p>校级选拔赛 · 一等奖</p>
+                    </div>
+                    <div class="editorial-cell">
+                      <h4>省赛三等奖</h4>
+                      <p>湖南省赛区 · 三等奖</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="hero-honor-footer">
+                <span>高教主赛道</span>
+                <span class="category">创新创业</span>
+              </div>
+            </article>
+
+            <!-- 右侧中卡片列：校级一等、校级二等奖学金 -->
+            <div class="bento-mid-col">
+              <!-- 中卡片 1：校级一等奖学金 -->
+              <article class="spotlight-card bento-mid-card reveal" style="--d:.06s">
+                <div class="mid-honor-content">
+                  <span class="mid-honor-icon" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24"><path d="M12 2 15 8l7 1-5 5 1 7-6-3-6 3 1-7-5-5 7-1z"/></svg>
+                  </span>
+                  <div class="mid-honor-text">
+                    <h3>校级一等奖学金</h3>
+                    <p>学业成绩</p>
+                  </div>
+                </div>
+                <span class="mid-honor-badge">学业标杆</span>
+              </article>
+
+              <!-- 中卡片 2：校级二等奖学金 -->
+              <article class="spotlight-card bento-mid-card reveal" style="--d:.12s">
+                <div class="mid-honor-content">
+                  <span class="mid-honor-icon" aria-hidden="true">
+                    <svg class="icon" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                  </span>
+                  <div class="mid-honor-text">
+                    <h3>校级二等奖学金</h3>
+                    <p>学业成绩</p>
+                  </div>
+                </div>
+                <span class="mid-honor-badge">学业优良</span>
+              </article>
+            </div>
+
+          </div>
+
+          <!-- 下半部：4 列紧凑小卡片（挑战杯一等奖[校赛一等]、三好学生、优秀学生干部、优秀团员） -->
+          <div class="bento-bottom-row">
+            <!-- 1. 「挑战杯」一等奖 -->
+            <article class="spotlight-card bento-small-card card-challenge-small reveal" style="--d:.18s">
+              <div class="small-card-top">
+                <span class="small-icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H7v4h10v-4h-2c-.55 0-1-.45-1-1v-2.34"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>
+                </span>
+                <span class="small-tag">校赛一等</span>
+              </div>
+              <div class="small-card-body">
+                <h4>「挑战杯」一等奖</h4>
+                <p>第十六届大学生科技作品竞赛</p>
+              </div>
+            </article>
+
+            <!-- 2. 三好学生 -->
+            <article class="spotlight-card bento-small-card reveal" style="--d:.24s">
+              <div class="small-card-top">
+                <span class="small-icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                </span>
+                <span class="small-tag">综合表彰</span>
+              </div>
+              <div class="small-card-body">
+                <h4>三好学生</h4>
+                <p>个人荣誉</p>
+              </div>
+            </article>
+
+            <!-- 3. 优秀学生干部 -->
+            <article class="spotlight-card bento-small-card reveal" style="--d:.3s">
+              <div class="small-card-top">
+                <span class="small-icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+                </span>
+                <span class="small-tag">骨干表彰</span>
+              </div>
+              <div class="small-card-body">
+                <h4>优秀学生干部</h4>
+                <p>个人荣誉</p>
+              </div>
+            </article>
+
+            <!-- 4. 优秀团员 -->
+            <article class="spotlight-card bento-small-card reveal" style="--d:.36s">
+              <div class="small-card-top">
+                <span class="small-icon" aria-hidden="true">
+                  <svg class="icon" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+                </span>
+                <span class="small-tag">先锋表彰</span>
+              </div>
+              <div class="small-card-body">
+                <h4>优秀团员</h4>
+                <p>个人荣誉</p>
+              </div>
+            </article>
+          </div>
+        </div>
       </div>
     </section>
 

@@ -471,6 +471,23 @@
     });
   })();
 
+  /* 荣誉与认可 Bento 鼠标物理漫反射微光 (Spotlight Follower) */
+  (function () {
+    var spotlightCards = document.querySelectorAll('.spotlight-card');
+    if (!spotlightCards.length) return;
+    if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    spotlightCards.forEach(function (card) {
+      card.addEventListener('mousemove', function (e) {
+        var rect = card.getBoundingClientRect();
+        var x = e.clientX - rect.left;
+        var y = e.clientY - rect.top;
+        card.style.setProperty('--mouse-x', x + 'px');
+        card.style.setProperty('--mouse-y', y + 'px');
+      }, { passive: true });
+    });
+  })();
+
   /* 埋点事件委托：带 data-track 的元素被点击时上报自定义事件（Umami）
      依赖统计脚本（window.umami.track），未加载时零副作用 */
   document.addEventListener('click', function (e) {

@@ -843,31 +843,401 @@ svg.icon {
 .agent-skill-link .icon-external { width: 12px; height: 12px; opacity: .7; }
 
 /* ==========================================================================
-   荣誉
+   荣誉 — 殿堂级 Bento 荣誉陈列系统
    ========================================================================== */
-.honors-grid {
-  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
-  max-width: 980px; margin: 0 auto;
+.section-head-dynamic {
+  text-align: center;
+  margin-bottom: 36px;
+  position: relative;
 }
-.honor {
-  display: flex; align-items: center; gap: 12px;
-  background: var(--surface-card); /* #FFFFFF */
+.kinetic-flip-h2 {
+  font-size: clamp(24px, 3.8vw, 30px);
+  font-weight: 750;
+  color: var(--ink);
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.kinetic-flip-box {
+  display: inline-block;
+  height: 1.35em;
+  overflow: hidden;
+  vertical-align: bottom;
+  position: relative;
+}
+.kinetic-flip-track {
+  display: flex;
+  flex-direction: column;
+  animation: textFlip 6.5s cubic-bezier(0.77, 0, 0.175, 1) infinite;
+}
+.kinetic-word {
+  height: 1.35em;
+  line-height: 1.35em;
+  color: var(--brand-deep);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--brand) 0%, #10B981 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+@keyframes textFlip {
+  0%, 26% { transform: translateY(0); }
+  33%, 59% { transform: translateY(-1.35em); }
+  66%, 92% { transform: translateY(-2.7em); }
+  100% { transform: translateY(0); }
+}
+.header-sub-clean {
+  margin-top: 8px;
+  color: var(--ink-2);
+  font-size: 14.5px;
+}
+.energy-bars {
+  display: inline-flex;
+  align-items: flex-end;
+  gap: 3.5px;
+  height: 22px;
+}
+.energy-bar {
+  width: 3.5px;
+  background: var(--brand);
+  border-radius: 2px;
+  animation: barJump 1.2s ease-in-out infinite alternate;
+}
+.energy-bar:nth-child(1) { height: 8px; animation-delay: 0.1s; }
+.energy-bar:nth-child(2) { height: 20px; animation-delay: 0.35s; }
+.energy-bar:nth-child(3) { height: 13px; animation-delay: 0.55s; }
+.energy-bar:nth-child(4) { height: 17px; animation-delay: 0.2s; }
+@keyframes barJump {
+  0% { transform: scaleY(0.35); opacity: 0.45; }
+  100% { transform: scaleY(1); opacity: 1; }
+}
+
+.bento-honors-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  max-width: 1040px;
+  margin: 0 auto;
+}
+
+/* 鼠标物理漫反射微光通用基类 */
+.spotlight-card {
+  position: relative;
+  background: #FFFFFF;
   border: 1px solid var(--line);
-  border-radius: var(--r-pill);
+  border-radius: var(--r-card);
   box-shadow: var(--shadow-card);
-  padding: 12px 18px 12px 14px;
-  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+  overflow: hidden;
+  transition: transform .25s cubic-bezier(0.16, 1, 0.3, 1),
+              box-shadow .25s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color .25s ease;
+}
+.spotlight-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    520px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+    rgba(5, 150, 105, 0.08),
+    transparent 65%
+  );
+  opacity: 0;
+  transition: opacity .35s ease;
+  pointer-events: none;
+  z-index: 2;
 }
 @media (hover: hover) {
-  .honor:hover {
-    transform: translateY(-2.5px);
-    box-shadow: var(--shadow-pop);
-    border-color: rgba(17, 24, 39, 0.18);
+  .spotlight-card:hover {
+    transform: translateY(-3.5px);
+    box-shadow: var(--shadow-pop), 0 16px 32px -10px rgba(5, 150, 105, 0.12);
+    border-color: rgba(5, 150, 105, 0.26);
+  }
+  .spotlight-card:hover::before {
+    opacity: 1;
   }
 }
-.honor .icon { width: 22px; height: 22px; color: var(--brand); flex: none; }
-.honor strong { display: block; font-size: 13.5px; font-weight: 650; line-height: 1.35; color: var(--ink); }
-.honor span { display: block; font-size: 11.5px; color: var(--ink-3); margin-top: 1px; }
+
+/* 上半部：左大卡片 (1.35fr) + 右双中卡片 (1fr) */
+.bento-top-row {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 18px;
+}
+
+/* 左侧大卡片：中国国际大学生创新大赛（互联网+）[款式 C：通栏极简排印] */
+.bento-hero-card {
+  padding: 26px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 236px;
+  position: relative;
+  background: linear-gradient(145deg, #FFFFFF 65%, #F3F9F6 100%);
+}
+.bento-hero-card::after {
+  content: "";
+  position: absolute;
+  top: 0; right: 0;
+  width: 220px; height: 220px;
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.18) 0%, rgba(246, 248, 247, 0) 70%);
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-honor-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  position: relative;
+  z-index: 3;
+}
+.hero-honor-badges {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.badge-obsidian {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 4px 11px;
+  border-radius: var(--r-pill);
+  background: var(--btn-dark);
+  color: #FFFFFF;
+  font-size: 11.5px;
+  font-weight: 650;
+  letter-spacing: .3px;
+}
+.badge-emerald {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 10px;
+  border-radius: var(--r-pill);
+  background: var(--brand-soft);
+  color: var(--brand-deep);
+  font-size: 11.5px;
+  font-weight: 650;
+  border: 1px solid rgba(5, 150, 105, 0.18);
+}
+.honor-trophy-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: linear-gradient(135deg, #ECFDF5 0%, #D1FAE5 100%);
+  border: 1px solid rgba(5, 150, 105, 0.25);
+  box-shadow: 0 8px 16px -4px rgba(5, 150, 105, 0.15);
+  display: grid;
+  place-items: center;
+  color: var(--brand);
+  flex: none;
+  position: relative;
+  z-index: 3;
+  transition: transform .3s ease;
+}
+@media (hover: hover) {
+  .spotlight-card:hover .honor-trophy-icon {
+    transform: scale(1.06) rotate(3deg);
+  }
+}
+.honor-trophy-icon svg { width: 24px; height: 24px; }
+.hero-honor-body {
+  margin: 14px 0 10px;
+  position: relative;
+  z-index: 3;
+}
+.hero-competition-title {
+  font-size: clamp(20px, 2.3vw, 24px);
+  font-weight: 750;
+  letter-spacing: -0.3px;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.hero-competition-alias {
+  font-size: 12.5px;
+  color: var(--ink-3);
+  font-weight: 500;
+  margin-top: 3px;
+}
+.style-editorial-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 14px;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  transition: background-color .2s ease, border-color .2s ease;
+}
+@media (hover: hover) {
+  .spotlight-card:hover .style-editorial-row {
+    background: #FFFFFF;
+    border-color: rgba(5, 150, 105, 0.2);
+    box-shadow: 0 4px 12px -2px rgba(15, 23, 19, 0.04);
+  }
+}
+.editorial-cell {
+  border-left: 2.5px solid var(--brand);
+  padding-left: 12px;
+}
+.editorial-cell h4 {
+  font-size: 16px;
+  font-weight: 750;
+  color: var(--ink);
+  line-height: 1.25;
+}
+.editorial-cell p {
+  font-size: 11.5px;
+  color: var(--ink-3);
+  margin-top: 3px;
+}
+.hero-honor-footer {
+  padding-top: 12px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 12.5px;
+  color: var(--ink-3);
+  position: relative;
+  z-index: 3;
+}
+.hero-honor-footer .category {
+  font-weight: 600;
+  color: var(--brand-deep);
+}
+
+/* 右侧中卡片纵向排布（校级一等、校级二等奖学金） */
+.bento-mid-col {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  gap: 16px;
+}
+.bento-mid-card {
+  padding: 18px 22px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.mid-honor-content {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  min-width: 0;
+}
+.mid-honor-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  background: var(--neutral-soft);
+  border: 1px solid var(--line);
+  display: grid;
+  place-items: center;
+  color: var(--brand-deep);
+  flex: none;
+  transition: background-color .2s ease, transform .2s ease;
+}
+@media (hover: hover) {
+  .spotlight-card:hover .mid-honor-icon {
+    background: var(--brand-soft);
+    color: var(--brand);
+    transform: scale(1.05);
+  }
+}
+.mid-honor-icon svg { width: 22px; height: 22px; }
+.mid-honor-text h3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.35;
+}
+.mid-honor-text p {
+  font-size: 12.5px;
+  color: var(--ink-3);
+  margin-top: 2px;
+}
+.mid-honor-badge {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: var(--brand-deep);
+  background: var(--brand-soft);
+  padding: 3px 10px;
+  border-radius: var(--r-pill);
+  flex: none;
+  white-space: nowrap;
+}
+
+/* 下半部分：4 列紧凑小卡片 */
+.bento-bottom-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+.bento-small-card {
+  padding: 18px 18px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 132px;
+}
+.small-card-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+.small-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: var(--neutral-soft);
+  color: var(--brand);
+  display: grid;
+  place-items: center;
+  transition: background-color .2s ease;
+}
+@media (hover: hover) {
+  .bento-small-card:hover .small-icon {
+    background: var(--brand-soft);
+  }
+}
+.small-icon svg { width: 18px; height: 18px; }
+.small-tag {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: var(--r-pill);
+  background: var(--neutral-soft);
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.small-card-body h4 {
+  font-size: 14.5px;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.35;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.small-card-body p {
+  font-size: 12px;
+  color: var(--ink-3);
+  margin-top: 3px;
+  line-height: 1.3;
+}
+.card-challenge-small {
+  border-color: rgba(5, 150, 105, 0.16);
+  background: linear-gradient(145deg, #FFFFFF 70%, #F6FAF7 100%);
+}
+.card-challenge-small .small-tag {
+  background: var(--brand-soft);
+  color: var(--brand-deep);
+}
 
 /* ==========================================================================
    联系
@@ -924,7 +1294,8 @@ svg.icon {
     margin-left: -145px;
     padding: 22px 20px;
   }
-  .honors-grid { grid-template-columns: repeat(2, 1fr); }
+  .bento-top-row { grid-template-columns: 1fr; }
+  .bento-bottom-row { grid-template-columns: repeat(2, 1fr); }
   .about-grid { grid-template-columns: 1fr; }
   .contact-grid { grid-template-columns: 1fr; max-width: 520px; }
   .hero-inner {
@@ -1012,7 +1383,11 @@ svg.icon {
   .tl-item { padding-left: 30px; }
   .timeline::before { left: 5px; }
   .tl-item::before { width: 13px; height: 13px; border-width: 3px; top: 26px; }
-  .honors-grid { grid-template-columns: 1fr; }
+  .bento-bottom-row { grid-template-columns: 1fr; }
+  .bento-hero-card { padding: 22px 18px; }
+  .bento-mid-card { padding: 16px 18px; }
+  .style-editorial-row { grid-template-columns: 1fr; gap: 10px; }
+  .kinetic-flip-h2 { font-size: 21px; }
   .card { padding: 22px 20px; }
   .skills-fan-stage { height: 470px; }
   .skills-fan-stage .agent-skill-card {
@@ -1034,4 +1409,6 @@ svg.icon {
   .page-glow::before, .page-glow::after, .page-glow .blob { animation: none !important; }
   .timeline::before { animation: none !important; }
   .tag-status .pulse { animation: none !important; }
+  .kinetic-flip-track { animation: none !important; }
+  .energy-bar { animation: none !important; }
 }
